@@ -1,0 +1,37 @@
+# Sistema Web para Administración de una Cafetería - Módulo Backend & Base de Datos
+
+Este repositorio contiene la arquitectura backend, la lógica de autenticación, el control de acceso y la gestión de productos desarrollada para el sistema de administración de la cafetería.
+
+##  Tecnologías Utilizadas
+
+* **Lenguaje de Programación:** PHP 8.x
+* **Gestor de Base de Datos:** MySQL / MariaDB
+* **Driver de Conexión:** PDO (PHP Data Objects) con consultas preparadas
+* **Entorno Web Local:** Apache (XAMPP / Servidor Nativo)
+
+---
+
+##  Estructura del Módulo Backend
+
+```text
+├── php/
+│   ├── conexion.php        # Conexión centralizada y segura a la Base de Datos mediante PDO.
+│   ├── login.php           # Autenticación de usuarios, hashing de contraseñas y manejo de sesiones.
+│   └── CRUD_productos.php  # Lógica de creación, consulta y procesamiento de imágenes de productos.
+├── sql/
+│   └── db_cafeteria.sql    # Script de creación de tablas, relaciones y datos iniciales.
+└── uploads/                # Directorio para el almacenamiento de imágenes de productos.
+
+base de datos y conexion
+
+$host = 'localhost';
+$dbname = 'db_cafeteria';$username = 'root'; // Ajustar según las credenciales de tu servidor
+$password = 'TU_CONTRASEÑA';
+
+Características de Seguridad Implementadas
+
+Prevención de Inyección SQL: Todas las consultas a la base de datos utilizan PDO::prepare() y asignación de parámetros con execute().
+
+Protección de Contraseñas: Uso de password_verify() para la validación segura de usuarios registrados.
+
+Control de Sesiones: Restricción de acceso a scripts del backend para usuarios no autenticados (session_start()).
